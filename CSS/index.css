@@ -1,0 +1,36 @@
+h1{
+   background-color: palevioletred;
+}
+
+#header{
+   background-color: rgb(15, 163, 227);
+}
+
+.head{
+   background-color: yellow;
+   letter-spacing:0.2cm;
+}
+
+.box1 {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100px;
+   width: 100px;
+   border: 5px solid blue;
+
+   padding: 50px;
+
+
+}
+.box2 {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   height: 100px;
+   width: 100px;
+   border: 5px solid rgb(48, 233, 156);
+
+   padding: 50px;
+}
