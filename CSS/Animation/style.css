@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: rgb(170, 247, 247);
+  height: 550px;
+  width: 600px;
+
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  background-color: #e71818;
+  position: relative;
+  animation-name: bottonMovement;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  /* animation-direction: alternate; */
+
+  /* animation-delay: 5s; */
+}
+
+@keyframes bottonMovement {
+  0% {
+    top: 0px;
+    left: 0px;
+  }
+  25% {
+    top: 0px;
+    left: 500px;
+  }
+  50% {
+    top: 400px;
+    left: 500px;
+  }
+  100% {
+    top: 400px;
+    left: 0px;
+  }
+
+}
+.box2 {
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  background-color: #e71818;
+  display: flex;
+  align-items: center;
+  transition-property: all;
+  transition-duration: 3s;
+}
+
+.box2:hover {
+   box-shadow: 5px;
+   box-shadow: 5px 5px 5px 12px rgb(221, 41, 155) ;
+   transition-timing-function: ease-in;
+   
+}
