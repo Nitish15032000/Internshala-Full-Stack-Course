@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* .header {
+   @apply bg-gradient-to-r from-blue-500;
+} */
+
+/* @layer base {
+   .header {
+      @apply bg-gradient-to-r from-blue-500;
+   }
+   
+} */
+
+@layer components {
+   .header {
+      @apply bg-gradient-to-r from-blue-500;
+   }
+
+}
