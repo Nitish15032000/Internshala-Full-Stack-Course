@@ -1,6 +1,7 @@
 let numbers = [1, 2, 3, 4, 5];
 
 // Sum all numbers
+let ans = numbers.reduce((acc, n) => acc + n, 0);
 let sum = numbers.reduce((acc, curr) => acc + curr, 0);
 console.log(sum); // 15
 
