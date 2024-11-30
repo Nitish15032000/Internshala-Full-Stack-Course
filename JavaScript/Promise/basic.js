@@ -18,6 +18,7 @@ const myPromise = new Promise((resolve, reject) => {
 });
 
 // Use the then method to handle the resolved promise
+// then is called when the promise is resolved
 myPromise.then((result) => {
    console.log(result); // Log the result
 })
@@ -30,6 +31,7 @@ myPromise.then((result) => {
 });
 
 // Use the catch method to handle the rejected promise
+// catch will be called when the promise is rejected
 myPromise.catch((error) => {
    console.error("An error occurred in the second promise:", error);
 });
