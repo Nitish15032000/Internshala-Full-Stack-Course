@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data with Callback</title>
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 5px gray;
+            text-align: center;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button -->
+    <button id="clickMe">Fetch Posts</button>
+
+    <!-- Output area -->
+    <div id="output">Click the button to fetch data...</div>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to fetch data using a callback
+        function fetchData(callback) {
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerText = "Fetching data... Please wait for 5 seconds.";
+
+            // Simulate delay using setTimeout
+            setTimeout(() => {
+                // Fetch data from JSONPlaceholder API
+                fetch("https://dummyjson.com/posts")
+                    .then(response => response.json())
+                    .then(data => callback(data))
+                    .catch(error => {
+                        console.error("Error fetching data:", error);
+                        outputDiv.innerText = "Failed to fetch data. Please try again.";
+                    });
+            }, 5000); // 5 seconds delay
+        }
+
+        // Add event listener to button
+        document.getElementById("clickMe").addEventListener("click", () => {
+            fetchData((data) => {
+                // Display post titles in the output div
+                const outputDiv = document.getElementById("output");
+                outputDiv.innerHTML = "<h3>Fetched Post Titles:</h3>";
+
+                // Iterate through posts and display titles
+                data.posts.forEach((post, index) => {
+                    outputDiv.innerHTML += `<p><strong>${index + 1}.</strong> ${post.title}</p>`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

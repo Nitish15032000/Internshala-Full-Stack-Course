@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises Implementation</title>
+    <style>
+        /* Basic Styling */
+        body {
+            background-color: #f0f8ff; /* Light Blue */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-height: 300px;
+            overflow-y: auto;
+            width: 300px;
+            color: #333;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <h1>Promises Example</h1>
+    
+    <!-- Button to Trigger the Promise -->
+    <button id="fetchButton">Fetch Posts</button>
+
+    <!-- Div to Display Output -->
+    <div id="output">Click the button to fetch data...</div>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to fetch data with a Promise
+        function fetchDataWithTimeout(url, timeout = 5000) {
+            // Return a Promise with fetch and timeout
+            return new Promise((resolve, reject) => {
+                const timer = setTimeout(() => {
+                    reject("Operation timed out.");
+                }, timeout);
+
+                fetch(url)
+                    .then(response => {
+                        clearTimeout(timer); // Clear the timeout on success
+                        if (!response.ok) throw new Error("Failed to fetch data");
+                        return response.json();
+                    })
+                    .then(data => resolve(data))
+                    .catch(error => {
+                        clearTimeout(timer);
+                        reject(error.message);
+                    });
+            });
+        }
+
+        // Handle Button Click
+        document.getElementById("fetchButton").addEventListener("click", () => {
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "Loading...";
+
+            // Call fetchDataWithTimeout and handle response or errors
+            fetchDataWithTimeout("https://dummyjson.com/posts")
+                .then(data => {
+                    // Display post titles on success
+                    outputDiv.innerHTML = "<h3>Fetched Post Titles:</h3>";
+                    data.posts.forEach((post, index) => {
+                        outputDiv.innerHTML += `<p><strong>${index + 1}.</strong> ${post.title}</p>`;
+                    });
+                })
+                .catch(error => {
+                    // Display error message
+                    outputDiv.innerHTML = `<p class="error">${error}</p>`;
+                });
+        });
+    </script>
+</body>
+</html>
