@@ -1,0 +1,28 @@
+.box {
+  width: 100px;
+  height: 100px;
+}
+
+.container {
+  width: 700px;
+  height: 700px;
+  background: #3ce1d9;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+#box1 {
+  background: #eb8918;
+  /* align-self: center baseline; */
+}
+#box2 {
+  /* align-self:auto; */
+  background: #541cee;
+}
+#box3 {
+  background: #e012eb;
+}
+#box4 {
+  background: #d5f50a;
+}
