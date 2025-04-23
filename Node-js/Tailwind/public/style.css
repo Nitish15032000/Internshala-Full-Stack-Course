@@ -14,6 +14,8 @@
     --color-blue-300: oklch(80.9% 0.105 251.813);
     --color-pink-600: oklch(59.2% 0.249 0.584);
     --color-black: #000;
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -185,6 +187,10 @@
   }
   .bg-blue-300 {
     background-color: var(--color-blue-300);
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
   }
   .text-amber-50 {
     color: var(--color-amber-50);
